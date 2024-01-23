@@ -1,0 +1,40 @@
+
+
+
+header 
+{	
+    font-size: 20px;
+	margin-top: 0%;
+	margin-right: 0%;
+	margin-left: 0%;
+	text-align: center;
+
+}
+
+.section 
+{
+    font-size: 400px;
+	margin-right: 20%;
+	margin-left: 20%;
+	text-align: center;
+}
+
+.pad-basic
+
+{
+padding:.5%; 
+	
+}
+
+.no-btm
+{
+	margin-bottom:0%;
+}
+
+.btn-der
+{
+	text-align: right;
+}
+
+
+
