@@ -4,10 +4,10 @@
     require("config.php");
     // Leemos los valores que nos llegan por GET
    $valor = $_GET['valor'];
-   $contador = 1;
+   $contador = "C2";
     
     // Esta es la instrucción para insertar los valores
-    $query = "INSERT INTO valores(valor, ID) VALUES('$valor', '$contador')";
+    $query = "INSERT INTO valores(valor, ID) VALUES('".$valor."', '".$contador."')";
     // Ejecutamos la instrucción
     mysqli_query($con, $query);
     mysqli_close($con);

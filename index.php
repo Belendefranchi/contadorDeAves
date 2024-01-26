@@ -8,10 +8,11 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery-1.12.4-jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	style="background:#1B1464"
 </head>
-<body style="background:#1B1464">
+<body>
 	<?php
-	require_once 'DBconect.php';
+	require 'DBconect.php';
 	session_start();
 	if (isset($_SESSION["admin_login"]))	//Condicion admin
 	{

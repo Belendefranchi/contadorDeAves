@@ -1,6 +1,6 @@
 <?php
 ////////////////// CONEXION A LA BASE DE DATOS ////////////////////////////////////
-$host="192.168.1.113";
+$host="intranet";
 $usuario="root";
 $contraseña="";
 $base="sensores";
@@ -12,7 +12,7 @@ if ($conexion -> connect_errno)
 }
 
 /////////////////////// CONSULTA A LA BASE DE DATOS ////////////////////////
-$resAlumnos=$conexion->query("SELECT * FROM valores WHERE (lote = 1) and (DATE(tiempo) = DATE(NOW())) ORDER by tiempo DESC limit 0,1");
+$resAlumnos=$conexion->query("SELECT * FROM valores WHERE lote = 1 and ID = 0 and (DATE(tiempo) = DATE(NOW())) ORDER by tiempo DESC limit 0,1");
 ///TABLA DONDE SE DESPLIEGAN LOS REGISTROS LOTE 1 //////////////////////////////
 echo '<table class="table table-striped table-hover" style="font-size:20px;">
 
@@ -34,7 +34,7 @@ echo '<table class="table table-striped table-hover" style="font-size:20px;">
 				}
 				echo '</table>';
 
-$resAlumnos=$conexion->query("SELECT * FROM valores WHERE (lote = 2) and (DATE(tiempo) = DATE(NOW())) ORDER by tiempo DESC limit 0,1");
+/* $resAlumnos=$conexion->query("SELECT * FROM valores WHERE (lote = 2) and (DATE(tiempo) = DATE(NOW())) ORDER by tiempo DESC limit 0,1");
 ///TABLA DONDE SE DESPLIEGAN LOS REGISTROS LOTE 2 //////////////////////////////
 echo '<table class="table table-striped table-hover" style="font-size:20px;">
 
@@ -210,7 +210,7 @@ echo '<table class="table table-striped table-hover" style="font-size:20px;">
 					
 						 </tr>';
 				}
-				echo '</table>';
+				echo '</table>'; */
 
 				?>	
 
