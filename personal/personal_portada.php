@@ -30,18 +30,6 @@
 			window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF']; ?>');
 		}
 	</script>
-	<script type="text/javascript">
-		function tiempoReal() {
-			var tabla = $.ajax({
-				url: 'tablaConsulta.php',
-				dataType: 'text',
-				async: false
-			}).responseText;
-
-			document.getElementById("miTabla").innerHTML = tabla;
-		}
-		setInterval(tiempoReal, 1000);
-	</script>
 	<script src="/js/sweetalert.min.js"></script>
 </head>
 <body>
@@ -69,12 +57,19 @@
 				<a href="../cerrar_sesion.php"><button class="btn btn-dark"></span> Cerrar Sesion</button></a>
 			</div>
 		</nav>
-		<div style="background:#1B1464" class="col-auto p-5 text-center">
+		<div style="background:#1B1464" class="d-flex flex-column col-auto p-5 text-center">
 			<h2 style="color:white" class="mb-4">CONTADOR DE AVES</h2>
-			<form class="d-flex justify-content-center" action="personal_portada.php" method="get">
-				<div class="d-flex gap-3 justify-content-center">
-					<input type="text" maxlength="1" id="campo1" name="campo1" class="form-control col-4" placeholder="Ingrese lote" aria-label="Lote" aria-describedby="basic-addon1" required>
-					<input type="submit" class="btn btn-outline-light col-6" value="Cambiar LOTE"/>
+			<form action="personal_portada.php" method="get">
+				
+				<div class="d-flex gap-3 m-3 justify-content-center">
+					<button class="btn btn-outline-light" onclick="CambiaLote(1)">Lote 1</button>
+					<button class="btn btn-outline-light" onclick="CambiaLote(2)">Lote 2</button>
+					<button class="btn btn-outline-light" onclick="CambiaLote(3)">Lote 3</button>
+					<button class="btn btn-outline-light" onclick="CambiaLote(4)">Lote 4</button>
+				</div>
+				<div class="row d-flex gap-3 m-3 justify-content-center">
+					<input type="text" maxlength="1" id="lote" name="lote" class="form-control col-4" placeholder="Ingrese lote" aria-label="Lote" aria-describedby="basic-addon1" required>
+					<input type="submit" class="btn btn-outline-light" value="Cambiar LOTE">
 				</div>
 <!-- 					<div class="col">
 						<input type="text" id="patente" name="patente" class="form-control" placeholder="Ingrese patente transporte" aria-label="Lote" aria-describedby="basic-addon1" required>
@@ -91,9 +86,9 @@
 		if (empty($_GET)) {
 		} else {
 			define('BOT_TOKEN', '5959493740:AAFuuDegEPADWw_NDpjUCLbkfCDm7RxX0XI');
-			define('CHAT_ID', '-880202066'); //672907249 //-550093573
+			define('CHAT_ID', '-880202066');
 			define('APi_URL', 'https://api.telegram.org/bot' . BOT_TOKEN . '/');
-			enviar_telegram("lote cambiado a: $campo1");
+			enviar_telegram("lote cambiado a: $lote");
 		}
 		function enviar_telegram($msj)
 		{
@@ -176,16 +171,17 @@
 				///////////////////////////// DATO INVALIDO ////////////////////////////////////
 				extract($_GET);
 
-				if (@$campo1 > 8) {
+				if (@$lote > 8) {
 					echo '<script type="text/javascript">
 									swal("Lote invalido", "Solo puede ingresar lotes del 1 al 8.", "error");
 								</script>';
 				}
-				if (@$campo1 < 0) {
+				if (@$lote < 0) {
 					echo '<script type="text/javascript">
 									swal("Lote invalido", "Solo puede ingresar lotes del 1 al 8.", "error");
 								</script>';
 				}
+				
 				////////////////// CONEXION A LA BASE DE DATOS ////////////////////////////////////
 				$host = "intranet";
 				$usuario = "root";
@@ -195,110 +191,153 @@
 				if ($conexion->connect_errno) {
 					die("Fallo la conexion:");
 				}
+
 				///////////////////////// CAMBIA LOTE A 1 ////////////////////////////
 				extract($_GET);
-				if (@$campo1 == 1) {
+				if (@$lote == 1) {
 					echo '<script type="text/javascript">
 										swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 1";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
-/* 						$patente = strtoupper($patente);
-
-					$sqlborrar = "ALTER TABLE valores ALTER COLUMN patente SET DEFAULT '$patente' ";
-					$resborrar = mysqli_query($conexion, $sqlborrar); */
 				}
+
 				///////////////////////// CAMBIA LOTE A 2 ////////////////////////////
 				extract($_GET);
-				if (@$campo1 == 2) {
+				if (@$lote == 2) {
 					echo '<script type="text/javascript">
 										swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 2";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
-/* 						$patente = strtoupper($patente);
-
-					$sqlborrar = "ALTER TABLE valores ALTER COLUMN patente SET DEFAULT '$patente' ";
-					$resborrar = mysqli_query($conexion, $sqlborrar); */
 				}
+
 				///////////////////////// CAMBIA LOTE A 3 ////////////////////////////
 				extract($_GET);
-				if (@$campo1 == 3) {
+				if (@$lote == 3) {
 					echo '<script type="text/javascript">
 										swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 3";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
-/* 						$patente = strtoupper($patente);
-
-					$sqlborrar = "ALTER TABLE valores ALTER COLUMN patente SET DEFAULT '$patente' ";
-					$resborrar = mysqli_query($conexion, $sqlborrar); */
 				}
+
 				///////////////////////// CAMBIA LOTE A 4 ////////////////////////////
 				extract($_GET);
-				if (@$campo1 == 4) {
+				if (@$lote == 4) {
 					echo '<script type="text/javascript">
 										swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 4";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
-/* 						$patente = strtoupper($patente);
-
-					$sqlborrar = "ALTER TABLE valores ALTER COLUMN patente SET DEFAULT '$patente' ";
-					$resborrar = mysqli_query($conexion, $sqlborrar); */
 				}
+
 				///////////////////////// CAMBIA LOTE A 5 ////////////////////////////
 				extract($_GET);
-				if (@$campo1 == 5) {
+				if (@$lote == 5) {
 					echo '<script type="text/javascript">
 										swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 5";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
-/* 						$patente = strtoupper($patente);
-
-					$sqlborrar = "ALTER TABLE valores ALTER COLUMN patente SET DEFAULT '$patente' ";
-					$resborrar = mysqli_query($conexion, $sqlborrar); */
 				}
+
 				///////////////////////// CAMBIA LOTE A 6 ////////////////////////////
 				extract($_GET);
-				if (@$campo1 == 6) {
+				if (@$lote == 6) {
 					echo '<script type="text/javascript">
 										swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 6";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
-/* 						$patente = strtoupper($patente);
-
-					$sqlborrar = "ALTER TABLE valores ALTER COLUMN patente SET DEFAULT '$patente' ";
-					$resborrar = mysqli_query($conexion, $sqlborrar); */
 				}
+
 				///////////////////////// CAMBIA LOTE A 7 ////////////////////////////
 				extract($_GET);
-				if (@$campo1 == 7) {
+				if (@$lote == 7) {
 					echo '<script type="text/javascript">
 										swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 7";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
-/* 						$patente = strtoupper($patente);
-
-					$sqlborrar = "ALTER TABLE valores ALTER COLUMN patente SET DEFAULT '$patente' ";
-					$resborrar = mysqli_query($conexion, $sqlborrar); */
 				}
+
 				///////////////////////// CAMBIA LOTE A 8 ////////////////////////////
 				extract($_GET);
-				if (@$campo1 == 8) {
+				if (@$lote == 8) {
 					echo '<script type="text/javascript">
 										swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 8";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
-/* 						$patente = strtoupper($patente);
-
-					$sqlborrar = "ALTER TABLE valores ALTER COLUMN patente SET DEFAULT '$patente' ";
-					$resborrar = mysqli_query($conexion, $sqlborrar); */
 				}
+
+			function CambiaLote($lote){
+				extract($_GET);
+				switch ($lote) {
+					case '1':
+						echo '<script type="text/javascript">
+										swal("Lote cambiado correctamente, "R", "success");
+									</script>';
+							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 1";
+							$resborrar = mysqli_query($conexion, $sqlborrar);
+						break;
+					case '2':
+						echo '<script type="text/javascript">
+										swal("Lote cambiado correctamente, "R", "success");
+									</script>';
+							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 2";
+							$resborrar = mysqli_query($conexion, $sqlborrar);
+						break;
+					case '3':
+						echo '<script type="text/javascript">
+										swal("Lote cambiado correctamente, "R", "success");
+									</script>';
+							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 3";
+							$resborrar = mysqli_query($conexion, $sqlborrar);
+						break;
+					case '4':
+						echo '<script type="text/javascript">
+										swal("Lote cambiado correctamente, "R", "success");
+									</script>';
+							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 4";
+							$resborrar = mysqli_query($conexion, $sqlborrar);
+						break;
+					case '5':
+						echo '<script type="text/javascript">
+										swal("Lote cambiado correctamente, "R", "success");
+									</script>';
+							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 5";
+							$resborrar = mysqli_query($conexion, $sqlborrar);
+						break;
+					case '6':
+						echo '<script type="text/javascript">
+										swal("Lote cambiado correctamente, "R", "success");
+									</script>';
+							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 6";
+							$resborrar = mysqli_query($conexion, $sqlborrar);
+						break;
+					case '7':
+						echo '<script type="text/javascript">
+										swal("Lote cambiado correctamente, "R", "success");
+									</script>';
+							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 7";
+							$resborrar = mysqli_query($conexion, $sqlborrar);
+						break;
+					case '8':
+						echo '<script type="text/javascript">
+										swal("Lote cambiado correctamente, "R", "success");
+									</script>';
+							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 8";
+							$resborrar = mysqli_query($conexion, $sqlborrar);
+						break;
+					
+					default:
+						$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 1";
+						$resborrar = mysqli_query($conexion, $sqlborrar);
+						break;
+				}
+			}
 				?>
 				<?php
 				////////////////// BORRA TODO ///////////////////////
@@ -322,10 +361,23 @@
 				</div>
 			</section>
 		</div>
+		<script type="text/javascript">
+			function tiempoReal() {
+				var tabla = $.ajax({
+					url: 'tablaConsulta.php',
+					dataType: 'text',
+					async: false
+				}).responseText;
+
+				document.getElementById("miTabla").innerHTML = tabla;
+			}
+			setInterval(tiempoReal, 1000);
+		</script>
 	</main>
 	<footer class="text-center">
 		<!-- <img class="img-fluid" src="/img/1.png" style="width:90px !important; height:60px !important" alt=""> -->
 		<video width="100" height="100" src="./media/loop.mp4" controls loop autoplay></video>
 	</footer>
+
 </body>
 </html>
