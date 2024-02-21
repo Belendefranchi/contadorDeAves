@@ -5,12 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CONTADOR</title>
 	<meta charset="utf-8">
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.bundle.min.js"></script>
-
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/sweetalert.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/sweetalert.min.js"></script>
 	<?php
 	session_start();
 
@@ -54,30 +56,43 @@
 						<a class="nav-link active" aria-current="page" href="http://192.168.1.113/calidad">Calidad</a>
 					</li>
 				</ul>
-				<a href="../cerrar_sesion.php"><button class="btn btn-dark"></span> Cerrar Sesion</button></a>
+				<a href="../cerrar_sesion.php"><button class="btn btn-secondary">Cerrar Sesion</button></a>
 			</div>
 		</nav>
 		<div style="background:#1B1464" class="d-flex flex-column col-auto p-5 text-center">
 			<h2 style="color:white" class="mb-4">CONTADOR DE AVES</h2>
-			<form action="personal_portada.php" method="get">
-				
-				<div class="d-flex gap-3 m-3 justify-content-center">
-					<button class="btn btn-outline-light" onclick="CambiaLote(1)">Lote 1</button>
-					<button class="btn btn-outline-light" onclick="CambiaLote(2)">Lote 2</button>
-					<button class="btn btn-outline-light" onclick="CambiaLote(3)">Lote 3</button>
-					<button class="btn btn-outline-light" onclick="CambiaLote(4)">Lote 4</button>
+			<div class="container text-center">
+				<div class="row justify-content-center p-3">
+					<form class="col-1 p-0">
+						<input type="hidden" id="lote" name="lote" value="1">
+						<input type="submit" class="btn btn-outline-light" value="Lote 1">
+					</form>
+					<form class="col-1 p-0">
+						<input type="hidden" id="lote" name="lote" value="2">
+						<input type="submit" class="btn btn-outline-light" value="Lote 2">
+					</form>
+					<form class="col-1 p-0">
+						<input type="hidden" id="lote" name="lote" value="3">
+						<input type="submit" class="btn btn-outline-light" value="Lote 3">
+					</form>
+					<form class="col-1 p-0">
+						<input type="hidden" id="lote" name="lote" value="4">
+						<input type="submit" class="btn btn-outline-light" value="Lote 4">
+					</form>
 				</div>
-				<div class="row d-flex gap-3 m-3 justify-content-center">
-					<input type="text" maxlength="1" id="lote" name="lote" class="form-control col-4" placeholder="Ingrese lote" aria-label="Lote" aria-describedby="basic-addon1" required>
-					<input type="submit" class="btn btn-outline-light" value="Cambiar LOTE">
-				</div>
-<!-- 					<div class="col">
-						<input type="text" id="patente" name="patente" class="form-control" placeholder="Ingrese patente transporte" aria-label="Lote" aria-describedby="basic-addon1" required>
-					</div> -->
-<!-- 					<input type='button' id="patente" name="patente" class="btn btn-outline-light" value='Reiniciar CONTADOR' onclick='salir()'>
-					<input type='button' class="btn btn-outline-light" value='Exportar a PDF'  onclick='salir3()'> 
-		<a href="http://e13/reportes.php" class="btn btn-outline-light">Reportes HISTORICOS</a> -->
-			</form>
+				<div class="row justify-content-center">
+					<form class="col-4 d-flex gap-3">
+						<input type="text" id="lote" name="lote" class="form-control" placeholder="Ingrese lote" required>
+						<input type="submit" class="btn btn-outline-light" value="Cambiar LOTE">
+					</form>
+					</div>
+	<!-- 					<div class="col">
+							<input type="text" id="patente" name="patente" class="form-control" placeholder="Ingrese patente transporte" aria-label="Lote" aria-describedby="basic-addon1" required>
+						</div> -->
+	<!-- 					<input type='button' id="patente" name="patente" class="btn btn-outline-light" value='Reiniciar CONTADOR' onclick='salir()'>
+						<input type='button' class="btn btn-outline-light" value='Exportar a PDF'  onclick='salir3()'> 
+			<a href="http://e13/reportes.php" class="btn btn-outline-light">Reportes HISTORICOS</a> -->
+			</div>
 		</div>	
 	</header>
 	<main>
@@ -90,8 +105,7 @@
 			define('APi_URL', 'https://api.telegram.org/bot' . BOT_TOKEN . '/');
 			enviar_telegram("lote cambiado a: $lote");
 		}
-		function enviar_telegram($msj)
-		{
+		function enviar_telegram($msj){
 			$queryArray = [
 				'chat_id' => CHAT_ID,
 				'text' => $msj,
@@ -272,7 +286,7 @@
 					$resborrar = mysqli_query($conexion, $sqlborrar);
 				}
 
-			function CambiaLote($lote){
+			function cambiaLote($lote){
 				extract($_GET);
 				switch ($lote) {
 					case '1':
@@ -281,6 +295,9 @@
 									</script>';
 							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 1";
 							$resborrar = mysqli_query($conexion, $sqlborrar);
+							echo '<script type="text/javascript">
+										alert("Lote cambiado a 1");
+									</script>';
 						break;
 					case '2':
 						echo '<script type="text/javascript">
@@ -375,9 +392,7 @@
 		</script>
 	</main>
 	<footer class="text-center">
-		<!-- <img class="img-fluid" src="/img/1.png" style="width:90px !important; height:60px !important" alt=""> -->
 		<video width="100" height="100" src="./media/loop.mp4" controls loop autoplay></video>
 	</footer>
-
 </body>
 </html>
