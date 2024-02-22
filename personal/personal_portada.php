@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="/css/sweetalert.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
@@ -210,7 +211,7 @@
 				extract($_GET);
 				if (@$lote == 1) {
 					echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
+										alert("Lote cambiado correctamente");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 1";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
@@ -220,7 +221,7 @@
 				extract($_GET);
 				if (@$lote == 2) {
 					echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
+									swal("Lote cambiado correctamente, "Lote 2", "success")
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 2";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
@@ -230,7 +231,7 @@
 				extract($_GET);
 				if (@$lote == 3) {
 					echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
+									swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 3";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
@@ -240,7 +241,7 @@
 				extract($_GET);
 				if (@$lote == 4) {
 					echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
+									swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 4";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
@@ -250,7 +251,7 @@
 				extract($_GET);
 				if (@$lote == 5) {
 					echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
+									swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 5";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
@@ -260,7 +261,7 @@
 				extract($_GET);
 				if (@$lote == 6) {
 					echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
+									swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 6";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
@@ -270,7 +271,7 @@
 				extract($_GET);
 				if (@$lote == 7) {
 					echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
+									swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 7";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
@@ -280,81 +281,12 @@
 				extract($_GET);
 				if (@$lote == 8) {
 					echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
+									swal("Lote cambiado correctamente, "R", "success");
 								</script>';
 					$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 8";
 					$resborrar = mysqli_query($conexion, $sqlborrar);
 				}
 
-			function cambiaLote($lote){
-				extract($_GET);
-				switch ($lote) {
-					case '1':
-						echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
-									</script>';
-							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 1";
-							$resborrar = mysqli_query($conexion, $sqlborrar);
-							echo '<script type="text/javascript">
-										alert("Lote cambiado a 1");
-									</script>';
-						break;
-					case '2':
-						echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
-									</script>';
-							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 2";
-							$resborrar = mysqli_query($conexion, $sqlborrar);
-						break;
-					case '3':
-						echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
-									</script>';
-							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 3";
-							$resborrar = mysqli_query($conexion, $sqlborrar);
-						break;
-					case '4':
-						echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
-									</script>';
-							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 4";
-							$resborrar = mysqli_query($conexion, $sqlborrar);
-						break;
-					case '5':
-						echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
-									</script>';
-							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 5";
-							$resborrar = mysqli_query($conexion, $sqlborrar);
-						break;
-					case '6':
-						echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
-									</script>';
-							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 6";
-							$resborrar = mysqli_query($conexion, $sqlborrar);
-						break;
-					case '7':
-						echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
-									</script>';
-							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 7";
-							$resborrar = mysqli_query($conexion, $sqlborrar);
-						break;
-					case '8':
-						echo '<script type="text/javascript">
-										swal("Lote cambiado correctamente, "R", "success");
-									</script>';
-							$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 8";
-							$resborrar = mysqli_query($conexion, $sqlborrar);
-						break;
-					
-					default:
-						$sqlborrar = "ALTER TABLE valores ALTER COLUMN lote SET DEFAULT 1";
-						$resborrar = mysqli_query($conexion, $sqlborrar);
-						break;
-				}
-			}
 				?>
 				<?php
 				////////////////// BORRA TODO ///////////////////////
@@ -392,6 +324,12 @@
 		</script>
 	</main>
 	<footer class="text-center">
+		<p>Contador de aves v1.3.1</p>
+		<!-- v1.0.0 versión original por Matías Leiva -->
+		<!-- v1.0.1 versión modificada por Belén De franchi | deshabilito reportes que no funcionan -->
+		<!-- v1.1.1 deshabilito dato de patente que no es relevante -->
+		<!-- v1.2.1 agrego opción para más contadores | uso nueva variable contador pobtenida por GET desde iot -->
+		<!-- v1.3.1 agrego botones para cambio de lote del 1 al 4 -->
 		<video width="100" height="100" src="./media/loop.mp4" controls loop autoplay></video>
 	</footer>
 </body>
