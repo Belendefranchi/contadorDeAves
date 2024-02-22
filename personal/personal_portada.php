@@ -326,7 +326,7 @@
 	<footer class="text-center">
 		<p>Contador de aves v1.3.1</p>
 		<!-- v1.0.0 versión original por Matías Leiva -->
-		<!-- v1.0.1 versión modificada por Belén De franchi | deshabilito reportes que no funcionan -->
+		<!-- v1.0.1 versión modificada por Belén De Franchi | deshabilito reportes que no funcionan -->
 		<!-- v1.1.1 deshabilito dato de patente que no es relevante -->
 		<!-- v1.2.1 agrego opción para más contadores | uso nueva variable contador pobtenida por GET desde iot -->
 		<!-- v1.3.1 agrego botones para cambio de lote del 1 al 4 -->
