@@ -320,7 +320,7 @@
 
 				document.getElementById("miTabla").innerHTML = tabla;
 			}
-			setInterval(tiempoReal, 1000);
+			setInterval(tiempoReal, 5000);
 		</script>
 	</main>
 	<footer class="text-center">
@@ -330,6 +330,7 @@
 		<!-- v1.1.1 deshabilito dato de patente que no es relevante -->
 		<!-- v1.2.1 agrego opción para más contadores | uso nueva variable contador pobtenida por GET desde iot -->
 		<!-- v1.3.1 agrego botones para cambio de lote del 1 al 4 -->
+		<!-- v2.3.1 cambio lógica con variables únicas a modelo escalable para sumar contadores y lotes, usando arrays foreachs anidados-->
 		<video width="100" height="100" src="./media/loop.mp4" controls loop autoplay></video>
 	</footer>
 </body>

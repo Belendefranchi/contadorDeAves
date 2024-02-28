@@ -14,13 +14,44 @@ $usuario="root";
 $contraseña="";
 $base="sensores";
 
-$conexion= new mysqli($host, $usuario, $contraseña, $base);
+$conexion = new mysqli($host, $usuario, $contraseña, $base);
 if ($conexion -> connect_errno){
 	//die("Fallo la conexion:(".$conexion -> mysqli_connect_errno().")".$conexion-> 
 		//mysqli_connect_error());
 }
 
-/////////////////////// CONSULTA A LA BASE DE DATOS ////////////////////////
+$contador = array(1, 2, 3);
+$lote = array(1, 2, 3, 4, 5, 6, 7, 8);
+
+foreach ($lote as $l) {
+	echo '<table class="table fs-3" style="font-size:20px;">
+	<tr class="table-active">
+		<th>Fecha y Hora</th>
+		<th>Lote</th>
+		<th>Contador</th>
+		<th>Aves Contadas</th>
+	</tr>';
+	foreach ($contador as $c) {
+		$stmt = $conexion->prepare("SELECT tiempo, lote, ID, valor FROM valores WHERE lote=? and ID=? and (DATE(tiempo) = DATE(NOW())) ORDER by tiempo DESC limit 0,1");
+
+		$stmt->bind_param("ii", $l, $c);
+		$stmt->execute();
+		$result = $stmt->get_result();
+
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_array(MYSQLI_BOTH)){
+				echo'<tr>
+							<td>'.$row['tiempo'].'</td>
+							<td>'.$row['lote'].'</td>
+							<td>'.$row['ID'].'</td>
+							<td class="fw-bold">'.$row['valor'].'</td>
+						</tr>';
+			}
+		}
+	}
+}
+
+/* /////////////////////// CONSULTA A LA BASE DE DATOS ////////////////////////
 $queryContador1L1=$conexion->query("SELECT tiempo, lote, ID, valor FROM valores WHERE lote=1 and ID=1 and (DATE(tiempo) = DATE(NOW())) ORDER by tiempo DESC limit 0,1");
 $queryContador2L1=$conexion->query("SELECT tiempo, lote, ID, valor FROM valores WHERE lote=1 and ID=2 and (DATE(tiempo) = DATE(NOW())) ORDER by tiempo DESC limit 0,1");
 
@@ -258,7 +289,7 @@ if (isset($queryContador1L8)){
 					<td class="fw-bold">'.$row['valor'].'</td>
 				</tr>';
 	}
-}
+} */
 echo '</table>';
 
 ?>	
