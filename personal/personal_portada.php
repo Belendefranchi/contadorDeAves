@@ -324,7 +324,7 @@
 		</script>
 	</main>
 	<footer class="text-center">
-		<p>Contador de aves v1.3.1</p>
+		<p>Contador de aves v2.3.1</p>
 		<!-- v1.0.0 versión original por Matías Leiva -->
 		<!-- v1.0.1 versión modificada por Belén De Franchi | deshabilito reportes que no funcionan -->
 		<!-- v1.1.1 deshabilito dato de patente que no es relevante -->
