@@ -324,13 +324,14 @@
 		</script>
 	</main>
 	<footer class="text-center">
-		<p>Contador de aves v2.3.1</p>
+		<p>Contador de aves v2.4.1</p>
 		<!-- v1.0.0 versión original por Matías Leiva -->
 		<!-- v1.0.1 versión modificada por Belén De Franchi | deshabilito reportes que no funcionan -->
 		<!-- v1.1.1 deshabilito dato de patente que no es relevante -->
 		<!-- v1.2.1 agrego opción para más contadores | uso nueva variable contador pobtenida por GET desde iot -->
 		<!-- v1.3.1 agrego botones para cambio de lote del 1 al 4 -->
 		<!-- v2.3.1 cambio lógica con variables únicas a modelo escalable para sumar contadores y lotes, usando arrays para los lotes y los contadores, con foreachs anidados-->
+		<!-- v2.4.1 logro que los encabezados de la tabla solo se muestren si hay información disponible del lote y del día actual, agrego leyenda para mostrar si no ha inciado el conteo del día.-->
 		<video width="100" height="100" src="./media/loop.mp4" loop autoplay></video>
 	</footer>
 </body>
