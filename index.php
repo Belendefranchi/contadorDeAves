@@ -8,9 +8,9 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery-1.12.4-jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	style="background:#1B1464"
+	
 </head>
-<body>
+<body style="background:#1B1464">
 	<?php
 	require 'DBconect.php';
 	session_start();

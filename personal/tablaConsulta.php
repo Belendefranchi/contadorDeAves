@@ -23,7 +23,12 @@ if ($conexion -> connect_errno){
 $contador = array(1, 2, 3);
 $lote = array(1, 2, 3, 4, 5, 6, 7, 8);
 
-$stmt = $conexion->prepare("SELECT fecha FROM valores WHERE (DATE(tiempo) = DATE(NOW()))");
+/* $dia_1 = "2024-04-16 "
+$tiempo_1 = $dia + "00:00:00";
+$tiempo_2 = $dia + "23:59:59"; */
+
+
+$stmt = $conexion->prepare("SELECT fecha FROM valores WHERE (DATE(tiempo) = DATE(NOW())) /* tiempo between '2024-04-16 00:00:00' and '2024-04-16 23:59:59' */");
 
 $stmt->execute();
 $result = $stmt->get_result();
@@ -32,7 +37,7 @@ if ($result->num_rows > 0) {
 
 	foreach ($lote as $l) {
 
-		$stmt = $conexion->prepare("SELECT lote FROM valores WHERE lote=? and (DATE(tiempo) = DATE(NOW())) ORDER by tiempo DESC limit 0,1");
+		$stmt = $conexion->prepare("SELECT lote FROM valores WHERE lote=? and (DATE(tiempo) = DATE(NOW())) /* tiempo between '2024-04-16 00:00:00' and '2024-04-16 23:59:59' */ORDER by tiempo DESC limit 0,1");
 		$stmt->bind_param("i", $l);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -49,7 +54,7 @@ if ($result->num_rows > 0) {
 
 			foreach ($contador as $c) {
 
-				$stmt = $conexion->prepare("SELECT tiempo, lote, ID, valor FROM valores WHERE lote=? and ID=? and (DATE(tiempo) = DATE(NOW())) ORDER by tiempo DESC limit 0,1");
+				$stmt = $conexion->prepare("SELECT tiempo, lote, ID, valor FROM valores WHERE lote=? and ID=? and (DATE(tiempo) = DATE(NOW())) /* tiempo between '2024-04-16 00:00:00' and '2024-04-16 23:59:59' */ORDER by tiempo DESC limit 0,1");
 				$stmt->bind_param("ii", $l, $c);
 				$stmt->execute();
 				$result = $stmt->get_result();

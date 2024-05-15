@@ -56,6 +56,9 @@
 					<li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="http://192.168.1.113/calidad">Calidad</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="http://192.168.1.113/personal/personal_cambio_lote.php">Cambio de lote</a>
+					</li>
 				</ul>
 				<a href="../cerrar_sesion.php"><button class="btn btn-secondary">Cerrar Sesion</button></a>
 			</div>
@@ -324,7 +327,7 @@
 		</script>
 	</main>
 	<footer class="text-center">
-		<p>Contador de aves v2.4.1</p>
+		<p>Contador de aves v2.5.1</p>
 		<!-- v1.0.0 versión original por Matías Leiva -->
 		<!-- v1.0.1 versión modificada por Belén De Franchi | deshabilito reportes que no funcionan -->
 		<!-- v1.1.1 deshabilito dato de patente que no es relevante -->
@@ -332,6 +335,7 @@
 		<!-- v1.3.1 agrego botones para cambio de lote del 1 al 4 -->
 		<!-- v2.3.1 cambio lógica con variables únicas a modelo escalable para sumar contadores y lotes, usando arrays para los lotes y los contadores, con foreachs anidados-->
 		<!-- v2.4.1 logro que los encabezados de la tabla solo se muestren si hay información disponible del lote y del día actual, agrego leyenda para mostrar si no ha inciado el conteo del día.-->
+		<!-- v2.5.1 agrego página específica para cambio de lote -->
 		<video width="100" height="100" src="./media/loop.mp4" loop autoplay></video>
 	</footer>
 </body>
